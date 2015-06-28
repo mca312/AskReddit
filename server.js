@@ -33,5 +33,5 @@ app.get('*', function(req, res){
 	res.render('index');
 });
 
-app.listen(3030);
+app.listen(1337);
 console.log('Listening on port 3030');
