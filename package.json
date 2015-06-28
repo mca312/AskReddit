@@ -22,9 +22,6 @@
   },
   "author": "Angellotti",
   "license": "ISC",
-  "engines": {
-    "node": "0.6.20"
-  },
   "description": "Fun",
   "repository": {
     "type": "git",
