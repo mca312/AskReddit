@@ -33,5 +33,5 @@ app.get('*', function(req, res){
 	res.render('index');
 });
 
-app.listen(8080);
-console.log('Listening on port 8080');
+app.listen(process.env.PORT || 5000);
+console.log('Listening on port 5000');
