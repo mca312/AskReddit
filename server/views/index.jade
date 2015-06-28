@@ -1,0 +1,15 @@
+extends ../includes/layout
+
+block main-content
+	.navbar.navbar-inverse.navbar-fixed-top
+		.container
+			.navbar-collapse.collapse
+				ul.nav.navbar-nav
+					li
+						a(href="/") Home
+
+	section.content
+		div(ng-view)
+
+	footer.container.text-center
+		p &copy; 2015 Angellotti
