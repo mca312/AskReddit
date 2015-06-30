@@ -1,5 +1,9 @@
 angular.module('app').controller('mvMainCtrl', function($scope) {
-	var threads = [];
+	var threads = [],
+		date = new Date(),
+		userId = date.getFullYear() + "" + date.getMonth() + date.getDate() + date.getHours() + date.getMinutes() + date.getSeconds() + date.getMilliseconds();
+
+		console.log(userId);
 
 	$.getJSON('https://www.reddit.com/r/askreddit.json?limit=100', function(data){
 		threads = data;
@@ -15,7 +19,7 @@ angular.module('app').controller('mvMainCtrl', function($scope) {
 	});
 
 	$scope.nextQuestion = function() {
-		ga('send', 'event', 'nextQuestion', 'Click');
+		ga('send', 'event', 'nextQuestion', 'Click', userId);
 		$scope.hideAnswerDiv = true;		
 		var random = Math.floor(Math.random() * 100);
 		$scope.random = random;
@@ -24,7 +28,7 @@ angular.module('app').controller('mvMainCtrl', function($scope) {
 	}
 
 	$scope.showAnswers = function() {
-		ga('send', 'event', 'showAnswers', 'Click');
+		ga('send', 'event', 'showAnswers', 'Click', userId);
 		$.getJSON('https://www.reddit.com/r/AskReddit/comments/' + $scope.currentThreadID + '/.json', function(data){
 			$scope.comments = data[1];
 		})
