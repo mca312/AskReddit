@@ -1,7 +1,9 @@
 angular.module('app').controller('mvMainCtrl', function($scope) {
+	var threads = [];
 
 	$.getJSON('https://www.reddit.com/r/askreddit.json?limit=100', function(data){
-		$scope.threads = data;		
+		threads = data;
+		local = data;		
 	})
 	.fail(function(){
 		$scope.question = 'reddit api call failed';
@@ -13,15 +15,16 @@ angular.module('app').controller('mvMainCtrl', function($scope) {
 	});
 
 	$scope.nextQuestion = function() {
-		$scope.hideAnswerDiv = true;
-
+		ga('send', 'event', 'nextQuestion', 'Click');
+		$scope.hideAnswerDiv = true;		
 		var random = Math.floor(Math.random() * 100);
 		$scope.random = random;
-		$scope.question = $scope.threads.data.children[random].data.title;
-		$scope.currentThreadID = $scope.threads.data.children[random].data.id;
+		$scope.question = threads.data.children[random].data.title;
+		$scope.currentThreadID = threads.data.children[random].data.id;
 	}
 
 	$scope.showAnswers = function() {
+		ga('send', 'event', 'showAnswers', 'Click');
 		$.getJSON('https://www.reddit.com/r/AskReddit/comments/' + $scope.currentThreadID + '/.json', function(data){
 			$scope.comments = data[1];
 		})

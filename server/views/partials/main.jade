@@ -4,6 +4,6 @@
 		p Question - {{random}}
 		p {{question}}
 		a(ng-click='showAnswers()') + Show Top 3 Reddit Answers
-		div(ng-hide='hideAnswerDiv', ng-repeat='comment in comments.data.children|limitTo:3')
-			li
+		div
+			li(ng-hide='hideAnswerDiv', ng-repeat='comment in comments.data.children|limitTo:3')
 				ul{{comment.data.body}}
