@@ -3,8 +3,6 @@ angular.module('app').controller('mvMainCtrl', function($scope) {
 		date = new Date(),
 		userId = date.getFullYear() + "" + date.getMonth() + date.getDate() + date.getHours() + date.getMinutes() + date.getSeconds() + date.getMilliseconds();
 
-		console.log(userId);
-
 	$.getJSON('https://www.reddit.com/r/askreddit.json?limit=100', function(data){
 		threads = data;
 		local = data;		
